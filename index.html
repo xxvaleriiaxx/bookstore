@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore - Главная</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header>
+    <div class="logo"><a href="index.html">BookStore</a></div>
+    <button class="burger" id="burger">☰</button>
+    <nav class="nav-menu" id="navMenu">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="delivery.html">Доставка</a></li>
+            <li><a href="favorites.html">Избранное</a></li>
+            <li><a href="cart.html">Корзина</a></li>
+        </ul>
+    </nav>
+    <form class="search-form" action="catalog.html" method="get">
+        <input type="text" name="search" placeholder="Поиск книг..." id="search-input">
+        <button type="submit">🔍</button>
+    </form>
+</header>
+<main>
+    <section class="hero">
+        <h1>Добро пожаловать в BookStore!</h1>
+        <p>Лучшие книги по лучшим ценам. Более 10 000 изданий в наличии.</p>
+        <a href="catalog.html" class="btn">Перейти в каталог</a>
+    </section>
+
+    <section class="recommended-books">
+        <h2>Рекомендуем</h2>
+        <div class="book-grid" id="recommended-grid"></div>
+    </section>
+
+    <section class="new-books">
+        <h2>Новинки</h2>
+        <div class="book-grid" id="new-grid"></div>
+    </section>
+
+    <section class="bestsellers">
+        <h2>Хиты продаж</h2>
+        <div class="book-grid" id="bestsellers-grid"></div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2026 BookStore. Все права защищены.</p>
+</footer>
+<script src="./js/script.js"></script>
+</body>
+</html>
