@@ -1,4 +1,4 @@
-// ---------- Данные книг ----------
+// Данные книг
 const booksData = [
     {
         id: 1,
@@ -457,7 +457,7 @@ const booksData = [
     }
 ];
 
-// ---------- Уведомления ----------
+// Уведомления
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
@@ -466,7 +466,7 @@ function showNotification(message, type = 'success') {
     setTimeout(() => notification.remove(), 3000);
 }
 
-// ---------- Работа с localStorage ----------
+// Работа с localStorage
 function getFavorites() {
     return JSON.parse(localStorage.getItem('favorites')) || [];
 }
@@ -535,7 +535,7 @@ function getCartItems() {
     }));
 }
 
-// ---------- Рендер карточки книги ----------
+// Рендер карточки книги
 function renderBookCard(book, showActions = true) {
     const card = document.createElement('div');
     card.className = 'book-card';
@@ -561,7 +561,7 @@ function renderBookCard(book, showActions = true) {
     return card;
 }
 
-// ---------- Инициализация страниц ----------
+//Инициализация страниц
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     const page = path.split('/').pop() || 'index.html';
@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Глобальные обработчики для кнопок (делегирование)
+    // Глобальные обработчики для кнопок
     document.addEventListener('click', e => {
         if (e.target.classList.contains('add-to-cart')) {
             const id = parseInt(e.target.dataset.id);
@@ -616,23 +616,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Остальные страницы статичны
 });
 
-// ---------- Главная страница ----------
+// Главная страница
 function initIndexPage() {
-    // Рекомендуемые (первые 4)
+    // Рекомендуемые первые 4
     const recommended = booksData.slice(0, 4);
     const recGrid = document.getElementById('recommended-grid');
     if (recGrid) {
         recommended.forEach(book => recGrid.appendChild(renderBookCard(book)));
     }
 
-    // Новинки (последние 4)
+    // Новинки последние 4
     const newBooks = booksData.slice(-4);
     const newGrid = document.getElementById('new-grid');
     if (newGrid) {
         newBooks.forEach(book => newGrid.appendChild(renderBookCard(book)));
     }
 
-    // Хиты продаж (перемешаем для примера)
+    // Хиты продаж перемешаем
     const bestsellers = [booksData[1], booksData[3], booksData[5], booksData[7]];
     const bestGrid = document.getElementById('bestsellers-grid');
     if (bestGrid) {
@@ -640,7 +640,7 @@ function initIndexPage() {
     }
 }
 
-// ---------- Каталог ----------
+//Каталог
 function initCatalogPage() {
     const container = document.getElementById('catalog-grid');
     const filterGenre = document.getElementById('filter-genre');
@@ -651,7 +651,7 @@ function initCatalogPage() {
     const applyFiltersBtn = document.getElementById('apply-filters');
     const resetFiltersBtn = document.getElementById('reset-filters');
 
-    // Заполнение селектов уникальными значениями
+    //Заполнение селектов уникальными значениями
     const genres = [...new Set(booksData.map(b => b.genre))];
     genres.sort().forEach(g => {
         const option = document.createElement('option');
@@ -676,7 +676,6 @@ function initCatalogPage() {
         filterAge.appendChild(option);
     });
 
-    // Получаем поисковый запрос из URL
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('search') || '';
     if (searchQuery) {
@@ -731,7 +730,7 @@ function initCatalogPage() {
     renderBooks(filterBooks());
 }
 
-// ---------- Карточка товара ----------
+// Карточка товара
 function initProductPage() {
     const params = new URLSearchParams(window.location.search);
     const id = parseInt(params.get('id'));
@@ -784,7 +783,7 @@ function initProductPage() {
     });
 }
 
-// ---------- Избранное ----------
+// Избранное
 function initFavoritesPage() {
     const container = document.getElementById('favorites-grid');
     const favoritesIds = getFavorites();
@@ -800,7 +799,7 @@ function initFavoritesPage() {
     });
 }
 
-// ---------- Корзина ----------
+// Корзина
 function initCartPage() {
     const container = document.getElementById('cart-items');
     const totalEl = document.getElementById('cart-total');
@@ -862,7 +861,7 @@ function initCartPage() {
 
     renderCart();
 
-    // Обработчики событий (делегирование)
+    // Обработчики событий
     container.addEventListener('click', e => {
         const target = e.target;
         const cartItem = target.closest('.cart-item');
